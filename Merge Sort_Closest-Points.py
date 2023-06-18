@@ -43,7 +43,6 @@ def merge(left, right, key):
 
     return merged
 
-
 def distance(P1, P2):
 
     """
@@ -59,12 +58,12 @@ def closest_pair_naive(points):
     closest_points = ()
 
     n = len(points)
-    for i in range(n):
-        for j in range(i + 1, n):
-            dist = distance(points[i], points[j])
+    for a in range(n):
+        for b in range(a + 1, n):
+            dist = distance(points[a], points[b])
             if dist < min_distance:
                 min_distance = dist
-                closest_points = (points[i], points[j])
+                closest_points = (points[a], points[b])
 
     return min_distance, closest_points
 
@@ -74,7 +73,7 @@ def closest_pair(points):
     """
     n = len(points)
 
-    # Base case: if there are only two or three points, use brute force
+    # if there are only two or three points, use brute force
     if n <= 3:
         return closest_pair_naive(points)
 
@@ -86,7 +85,7 @@ def closest_pair(points):
     left_half = points_sorted_by_x[:mid]
     right_half = points_sorted_by_x[mid:]
 
-    # Recursively find the closest pair in each half
+    # find the closest pair in each half
     min_left_dist, closest_left = closest_pair_naive(left_half)
     min_right_dist, closest_right = closest_pair_naive(right_half)
 
@@ -98,7 +97,7 @@ def closest_pair(points):
         min_dist = min_right_dist
         closest_pair = closest_right
 
-    # Find the points within the strip that are closer than the minimum distance
+    # The points within the strip that are closer than the minimum distance
     strip_points = [point for point in points_sorted_by_x if abs(point[0] - points[mid][0]) < min_dist]
     strip_points_sorted_by_y = merge_sort(strip_points, key='y')
 
@@ -113,34 +112,34 @@ def strip_closest(strip_points, min_distance, closest_pair):
     Helper function to find the closest pair of points within the strip.
     """
     n = len(strip_points)
-    for i in range(n):
-        j = i + 1
-        while j < n and strip_points[j][1] - strip_points[i][1] < min_distance:
-            dist = distance(strip_points[i], strip_points[j])
+    for a in range(n):
+        b = a + 1
+        while b < n and strip_points[b][1] - strip_points[a][1] < min_distance:
+            dist = distance(strip_points[a], strip_points[b])
             if dist < min_distance:
                 min_distance = dist
-                closest_pair = (strip_points[i], strip_points[j])
-            j += 1
+                closest_pair = (strip_points[a], strip_points[b])
+            b += 1
 
     return min_distance, closest_pair
 
 def main():
-    # Test the algorithm with different inputs
+    # The algorithm with different inputs
 
-    # Test case 1
-    points1 = [(3, 100), (1, 6), (2, 4), (14, 8), (4, 9)]
+    # Sample 1 points
+    points1 = [(4, 70), (2, 8), (3, 34), (5, 98), (3, 7)]
     min_distance1, closest_points1 = closest_pair(points1)
 
-    # Verify the result using the naive algorithm
+    # Confirming the result using the naive algorithm
     min_distance_naive1, closest_points_naive1 = closest_pair_naive(points1)
-
+# Print the result
     print("Closest pair of points (Divide & Conquer): ", closest_points1)
     print("Distance (Divide & Conquer): ", min_distance1)
     print("Closest pair of points (Naive): ", closest_points_naive1)
     print("Distance (Naive): ", min_distance_naive1)
     print()
 
-    # Test case 2
+    # Sample 2 points
     points2 = [(3, 5), (1, 2), (7, 9), (4, 6), (2, 8), (10, 12)]
     min_distance2, closest_points2 = closest_pair(points2)
 

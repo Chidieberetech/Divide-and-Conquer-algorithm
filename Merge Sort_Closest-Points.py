@@ -44,7 +44,6 @@ def merge(left, right, key):
     return merged
 
 def distance(P1, P2):
-
     """
     Calculate the distance between two points P1 and P2.
     """

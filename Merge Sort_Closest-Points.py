@@ -143,7 +143,7 @@ def main():
     points2 = [(3, 5), (1, 2), (7, 9), (4, 6), (2, 8), (10, 12)]
     min_distance2, closest_points2 = closest_pair(points2)
 
-    # Verify the result using the naive algorithm
+    # Confirming the result using the naive algorithm
     min_distance_naive2, closest_points_naive2 = closest_pair_naive(points2)
 
     print("Closest pair of points (Divide & Conquer): ", closest_points2)

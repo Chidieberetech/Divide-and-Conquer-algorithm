@@ -1,13 +1,13 @@
 import math
 
-def dist(P1, P2):
+def distance(P1, P2):
 
     """
     Calculate the distance between two points P1 and P2.
     """
     return math.sqrt((P1[0] - P2[0]) ** 2 + (P1[1] - P2[1]) ** 2)
 
-def brute_Force(P, n):
+def brute_force(P):
     """
     Brute-force method to find the closest pair of P in a given set.
     """
@@ -17,7 +17,7 @@ def brute_Force(P, n):
     n = len(P)
     for i in range(n):
         for j in range(i + 1, n):
-            dist = dist(P[i], P[j])
+            dist = distance(P[i], P[j])
             if dist < min_DIST:
                 min_DIST = dist
                 closest_points = (P[i], P[j])
@@ -32,7 +32,7 @@ def strip_closest(strip_points, min_distance, closest_pair):
     for i in range(n):
         j = i + 1
         while j < n and strip_points[j][1] - strip_points[i][1] < min_distance:
-            dist = dist(strip_points[i], strip_points[j])
+            dist = distance(strip_points[i], strip_points[j])
             if dist < min_distance:
                 min_distance = dist
                 closest_pair = (strip_points[i], strip_points[j])
@@ -40,6 +40,8 @@ def strip_closest(strip_points, min_distance, closest_pair):
 
     return min_distance, closest_pair
 
+
+# noinspection PyGlobalUndefined
 def closest_pair(points):
     """
     Divide & Conquer algorithm to find the closest pair of P in a given set.
@@ -49,7 +51,7 @@ def closest_pair(points):
 
     # Base case: if there are only two or three P, use brute force
     if n <= 3:
-        return brute_Force(points)
+        return brute_force(points)
 
     # Sort P by x-coordinate
     points_sorted_by_x = sorted(points, key=lambda point: point[0])
@@ -63,7 +65,7 @@ def closest_pair(points):
     min_left_dist, closest_left = closest_pair(left_half)
     min_right_dist, closest_right = closest_pair(right_half)
 
-    # Determine the minimum dist and closest pair between the two halves
+    # Determine the minimum distance and closest pair between the two halves
     if min_left_dist < min_right_dist:
         min_dist = min_left_dist
         closest_pair = closest_left
@@ -71,14 +73,14 @@ def closest_pair(points):
         min_dist = min_right_dist
         closest_pair = closest_right
 
-    # Find the P within the strip that are closer than the minimum dist
+    # Find the P within the strip that are closer than the minimum distance
     strip_points = [point for point in points_sorted_by_x if abs(point[0] - points[mid][0]) < min_dist]
     strip_points_sorted_by_y = sorted(strip_points, key=lambda point: point[1])
 
     # Check for closer pairs within the strip
     min_dist, closest_pair = strip_closest(strip_points_sorted_by_y, min_dist, closest_pair)
 
-    # Return the closest pair and its dist
+    # Return the closest pair and its distance
     return min_dist, closest_pair
 
 # Test the algorithm with a sample set of P

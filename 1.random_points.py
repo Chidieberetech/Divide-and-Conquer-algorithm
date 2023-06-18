@@ -44,7 +44,7 @@ def Recursive_created_points(points, size, mx1_range, ny1_range):
     Recursive_created_points(points, size // 6, (mx1_mid, mx1_range[1]), (ny1_range[0], ny1))
     Recursive_created_points(points, size // 6, (mx1_mid, mx1_range[1]), (ny1, ny1_range[1]))
 
-    # Create points within the current sub-range
+    # Create points within the current sub-range.
     for _ in range(size):
         mx1 = random.uniform(mx1_range[0], mx1_range[1])
         ny1 = random.uniform(ny1_range[0], ny1_range[1])

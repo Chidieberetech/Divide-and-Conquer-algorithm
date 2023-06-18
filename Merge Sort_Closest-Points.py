@@ -140,7 +140,7 @@ def main():
     print()
 
     # Sample 2 points
-    points2 = [(3, 5), (1, 2), (7, 9), (4, 6), (2, 8), (10, 12)]
+    points2 = [(13, 6), (3, 2), (6, 9), (1, 6), (3, 8), (14, 19)]
     min_distance2, closest_points2 = closest_pair(points2)
 
     # Confirming the result using the naive algorithm

@@ -78,11 +78,11 @@ def closest_pair(points):
         min_dist = min_right_dist
         closest_pair = closest_right
 
-    # Find the P within the strip that are closer than the minimum distance
+    # Finding the points P within the strip that are closer than the minimum distance
     strip_points = [point for point in points_sorted_by_x if abs(point[0] - points[mid][0]) < min_dist]
     strip_points_sorted_by_y = sorted(strip_points, key=lambda point: point[1])
 
-    # Check for closer pairs within the strip.
+    # Checking for the closer pairs within the strip.
     min_dist, closest_pair = strip_closest(strip_points_sorted_by_y, min_dist, closest_pair)
 
     # Return the closest pair and its distance

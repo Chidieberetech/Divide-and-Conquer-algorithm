@@ -34,7 +34,7 @@ def Recursive_generated_points(points, size, mx1_range, ny1_range):
     if mx1_range[1] - mx1_range[0] <= 0 or ny1_range[1] - ny1_range[0] <= 0:
         return
 
-    # Divide the ranges into smaller sub-ranges
+    # Division of the ranges into smaller sub-ranges
     x_mid = (mx1_range[0] + mx1_range[1]) / 4
     y_mid = (ny1_range[0] + ny1_range[1]) / 6
 

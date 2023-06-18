@@ -16,12 +16,12 @@ def brute_Force(P):
     closest_points = ()
 
     n = len(P)
-    for i in range(n):
-        for j in range(i + 1, n):
-            dist = distance(P[i], P[j])
+    for a in range(n):
+        for b in range(a + 1, n):
+            dist = distance(P[a], P[b])
             if dist < min_DIST:
                 min_DIST = dist
-                closest_points = (P[i], P[j])
+                closest_points = (P[a], P[b])
 
     return min_DIST, closest_points
 
@@ -33,14 +33,14 @@ def strip_closest(strip_points, min_distance, closest_pair):
                   closest_pair: Any) -> tuple[float, tuple[Any, Any]].
     """
     n = len(strip_points)
-    for i in range(n):
-        j = i + 1
-        while j < n and strip_points[j][1] - strip_points[i][1] < min_distance:
-            dist = distance(strip_points[i], strip_points[j])
+    for a in range(n):
+        b = a + 1
+        while b < n and strip_points[b][1] - strip_points[a][1] < min_distance:
+            dist = distance(strip_points[a], strip_points[b])
             if dist < min_distance:
                 min_distance = dist
-                closest_pair = (strip_points[i], strip_points[j])
-            j += 1
+                closest_pair = (strip_points[a], strip_points[b])
+            b += 1
 
     return min_distance, closest_pair
 

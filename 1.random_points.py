@@ -22,8 +22,8 @@ def Recursive_created_points(points, size, mx1_range, ny1_range):
     Args:
         points (list): List to store the created points.
         size (int): Number of points to create.
-        mx1_range (tuple): Range of x-values (min_x, max_x).
-        ny1_range (tuple): Range of y-values (min_y, max_y).
+        mx1_range (tuple): Range of mx1-values (min_mx1, max_mx1).
+        ny1_range (tuple): Range of ny1-values (min_ny1, max_ny1).
     """
     if size <= 0:
         return
@@ -35,20 +35,20 @@ def Recursive_created_points(points, size, mx1_range, ny1_range):
         return
 
     # Division of the ranges into smaller sub-ranges
-    x_mid = (mx1_range[0] + mx1_range[1]) / 4
-    y_mid = (ny1_range[0] + ny1_range[1]) / 6
+    mx1_mid = (mx1_range[0] + mx1_range[1]) / 4
+    ny1 = (ny1_range[0] + ny1_range[1]) / 6
 
     # Create points within the sub-ranges
-    Recursive_created_points(points, size // 6, (mx1_range[0], x_mid), (ny1_range[0], y_mid))
-    Recursive_created_points(points, size // 6, (mx1_range[0], x_mid), (y_mid, ny1_range[1]))
-    Recursive_created_points(points, size // 6, (x_mid, mx1_range[1]), (ny1_range[0], y_mid))
-    Recursive_created_points(points, size // 6, (x_mid, mx1_range[1]), (y_mid, ny1_range[1]))
+    Recursive_created_points(points, size // 6, (mx1_range[0], mx1_mid), (ny1_range[0], ny1))
+    Recursive_created_points(points, size // 6, (mx1_range[0], mx1_mid), (ny1, ny1_range[1]))
+    Recursive_created_points(points, size // 6, (mx1_mid, mx1_range[1]), (ny1_range[0], ny1))
+    Recursive_created_points(points, size // 6, (mx1_mid, mx1_range[1]), (ny1, ny1_range[1]))
 
     # Create points within the current sub-range
     for _ in range(size):
-        x = random.uniform(mx1_range[0], mx1_range[1])
-        y = random.uniform(ny1_range[0], ny1_range[1])
-        points.append((x, y))
+        mx1 = random.uniform(mx1_range[0], mx1_range[1])
+        ny1 = random.uniform(ny1_range[0], ny1_range[1])
+        points.append((mx1, ny1))
 
 def main():
     # Define the range of x-values and y-values for the points

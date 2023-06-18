@@ -88,9 +88,10 @@ def closest_pair(points):
     # Returns the closest pair and its distance
     return min_dist, closest_pair
 
-# Test the algorithm with a sample set of P(points)
+# The algorithm with a sample set of P(points)
 points = [(3.5, 9.5), (1, 7), (7, 4),  (6, 130), (10, 40), (13, 9016), (15, 10)]
 min_distance, closest_points = closest_pair(points)
 
+# Printing ("P(points): ", points)
 print("Closest pair of P(points): ", closest_points)
 print("Distance: ", min_distance)

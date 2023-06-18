@@ -66,7 +66,7 @@ def closest_pair(points):
     left_half = points_sorted_by_x[:mid]
     right_half = points_sorted_by_x[mid:]
 
-    # Recursively find the closest pair in each half
+    # Find the closest pair in each half - Recursively
     min_left_dist, closest_left = closest_pair(left_half)
     min_right_dist, closest_right = closest_pair(right_half)
 

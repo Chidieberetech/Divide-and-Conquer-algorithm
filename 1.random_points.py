@@ -35,16 +35,16 @@ def Recursive_generated_points(points, size, mx1_range, ny1_range):
         return
 
     # Divide the ranges into smaller sub-ranges
-    x_mid = (mx1_range[0] + mx1_range[1]) / 2
-    y_mid = (ny1_range[0] + ny1_range[1]) / 2
+    x_mid = (mx1_range[0] + mx1_range[1]) / 4
+    y_mid = (ny1_range[0] + ny1_range[1]) / 6
 
-    # Generate points within the sub-ranges
-    Recursive_generated_points(points, size // 4, (mx1_range[0], x_mid), (ny1_range[0], y_mid))
-    Recursive_generated_points(points, size // 4, (mx1_range[0], x_mid), (y_mid, ny1_range[1]))
-    Recursive_generated_points(points, size // 4, (x_mid, mx1_range[1]), (ny1_range[0], y_mid))
-    Recursive_generated_points(points, size // 4, (x_mid, mx1_range[1]), (y_mid, ny1_range[1]))
+    # Create points within the sub-ranges
+    Recursive_generated_points(points, size // 6, (mx1_range[0], x_mid), (ny1_range[0], y_mid))
+    Recursive_generated_points(points, size // 6, (mx1_range[0], x_mid), (y_mid, ny1_range[1]))
+    Recursive_generated_points(points, size // 6, (x_mid, mx1_range[1]), (ny1_range[0], y_mid))
+    Recursive_generated_points(points, size // 6, (x_mid, mx1_range[1]), (y_mid, ny1_range[1]))
 
-    # Generate points within the current subrange
+    # Create points within the current sub-range
     for _ in range(size):
         x = random.uniform(mx1_range[0], mx1_range[1])
         y = random.uniform(ny1_range[0], ny1_range[1])

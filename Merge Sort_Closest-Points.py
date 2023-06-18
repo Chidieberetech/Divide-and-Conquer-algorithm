@@ -73,7 +73,7 @@ def closest_pair(points):
     """
     n = len(points)
 
-    # if there are only two or three points, use brute force
+    # if there are only two or three points, use brute force.
     if n <= 3:
         return closest_pair_naive(points)
 

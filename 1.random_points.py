@@ -29,6 +29,7 @@ def Recursive_generated_points(points, size, mx1_range, ny1_range):
         return
 
     # Check if the range can be further divided
+    # if mx1 - range or ny1 - range becomes 0 or less, we stop dividing the range and return.
 
     if mx1_range[1] - mx1_range[0] <= 0 or ny1_range[1] - ny1_range[0] <= 0:
         return

@@ -52,11 +52,11 @@ def Recursive_created_points(points, size, mx1_range, ny1_range):
 
 def main():
     # Definition of the range of mx1-values and ny1-values for the points.
-    mx1_range = (0, 15)
-    ny1 = (0, 15)
+    mx1_range = (0, 18)
+    ny1 = (0, 18)
 
     # Create a set of 10 random points within the specified ranges.
-    points = create_a_set_random_points(15, mx1_range, ny1)
+    points = create_a_set_random_points(18, mx1_range, ny1)
 
     # Print the created points
     for point in points:

@@ -7,9 +7,10 @@ def distance(P1, P2):
     """
     return math.sqrt((P1[0] - P2[0]) ** 2 + (P1[1] - P2[1]) ** 2)
 
-def brute_force(P):
+def brute_Force(P):
     """
-    Brute-force method to find the closest pair of P in a given set.
+    Brute-force method to get the closest pair of P in a given set.
+    def brute_Force(P: {__len__, __getitem__}) -> tuple[float, tuple | tuple[Any, Any]]
     """
     min_DIST = float('inf')
     closest_points = ()
@@ -26,7 +27,10 @@ def brute_force(P):
 
 def strip_closest(strip_points, min_distance, closest_pair):
     """
-    Helper function to find the closest pair of P within the strip.
+    Helper function to find the closest pair of P within the strip
+    def strip_closest(strip_points: {__len__, __getitem__},
+                  min_distance: Any,
+                  closest_pair: Any) -> tuple[float, tuple[Any, Any]].
     """
     n = len(strip_points)
     for i in range(n):
@@ -45,13 +49,14 @@ def strip_closest(strip_points, min_distance, closest_pair):
 def closest_pair(points):
     """
     Divide & Conquer algorithm to find the closest pair of P in a given set.
+    def closest_pair(points: {__len__, __getitem__}) -> tuple[float, tuple | tuple[Any, Any]] | tuple[float, tuple[Any, Any]]
     """
     global closest_pair
     n = len(points)
 
     # Base case: if there are only two or three P, use brute force
     if n <= 3:
-        return brute_force(points)
+        return brute_Force(points)
 
     # Sort P by x-coordinate
     points_sorted_by_x = sorted(points, key=lambda point: point[0])

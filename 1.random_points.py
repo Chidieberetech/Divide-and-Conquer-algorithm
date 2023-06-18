@@ -2,7 +2,7 @@ import random
 
 def generate_random_points(size, x_range, y_range):
     """
-    Generate a set of random points within the specified ranges.
+    Generate a set of random points within the specified ranges using the Divide & Conquer approach.
 
     Args:
         size (int): Number of points to generate.
@@ -29,11 +29,15 @@ def _generate_points(points, size, x_range, y_range):
     if size <= 0:
         return
 
-    # Divide the ranges into smaller sub-ranges
+    # Check if the range can be further divided
+    if x_range[1] - x_range[0] <= 0 or y_range[1] - y_range[0] <= 0:
+        return
+
+    # Divide the ranges into smaller subranges
     x_mid = (x_range[0] + x_range[1]) / 2
     y_mid = (y_range[0] + y_range[1]) / 2
 
-    # Generate points within the sub-ranges
+    # Generate points within the subranges
     _generate_points(points, size // 4, (x_range[0], x_mid), (y_range[0], y_mid))
     _generate_points(points, size // 4, (x_range[0], x_mid), (y_mid, y_range[1]))
     _generate_points(points, size // 4, (x_mid, x_range[1]), (y_range[0], y_mid))

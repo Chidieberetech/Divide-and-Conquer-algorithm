@@ -54,11 +54,11 @@ def closest_pair(points):
     global closest_pair
     n = len(points)
 
-    # Base case: if there are only two or three P, use brute force
+    # Base case: if there are only two or three points (P), use brute force method
     if n <= 3:
         return brute_Force(points)
 
-    # Sort P by x-coordinate
+    # Sorting the points P by x-coordinate
     points_sorted_by_x = sorted(points, key=lambda point: point[0])
 
     # Divide the bruteForce(P) into two halves

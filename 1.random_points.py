@@ -1,52 +1,72 @@
 import random
 
-def generate_random_points(size, x_range, y_range):
+def create_a_set_random_points(size, mx1_range, ny1_range):
     """
-    Generate a set of random points within the specified ranges using the Divide & Conquer approach.
-
+    Create a set of random points within the specified ranges.
     Args:
-        size (int): Number of points to generate.
-        x_range (tuple): Range of x-values (min_x, max_x).
-        y_range (tuple): Range of y-values (min_y, max_y).
+        size (int): Number of points to create.
+        mx1_range (tuple): Range of mx1-values (min_mx1, max_mx1).
+        ny1_range (tuple): Range of ny1-values (min_ny1, max_ny1).
 
     Returns:
-        list: List of randomly generated points.
+        list: List of randomly created points.
     """
     points = []
-    _generate_points(points, size, x_range, y_range)
+    Recursive_generated_points(points, size, mx1_range, ny1_range)
     return points
 
-def _generate_points(points, size, x_range, y_range):
+def Recursive_generated_points(points, size, mx1_range, ny1_range):
     """
     Recursively generates random points within the specified ranges.
 
     Args:
-        points (list): List to store the generated points.
-        size (int): Number of points to generate.
-        x_range (tuple): Range of x-values (min_x, max_x).
-        y_range (tuple): Range of y-values (min_y, max_y).
+        points (list): List to store the created points.
+        size (int): Number of points to create.
+        mx1_range (tuple): Range of x-values (min_x, max_x).
+        ny1_range (tuple): Range of y-values (min_y, max_y).
     """
     if size <= 0:
         return
 
     # Check if the range can be further divided
-    if x_range[1] - x_range[0] <= 0 or y_range[1] - y_range[0] <= 0:
+"""additional check to
+    see if the
+    range
+    can
+    be
+    further
+    divided.If
+    the
+    width
+    of
+    either
+    the
+    x - range or y - range
+    becomes
+    0 or less, we
+    stop
+    dividing
+    the
+    range and
+    return."""
+
+    if mx1_range[1] - mx1_range[0] <= 0 or ny1_range[1] - ny1_range[0] <= 0:
         return
 
-    # Divide the ranges into smaller subranges
-    x_mid = (x_range[0] + x_range[1]) / 2
-    y_mid = (y_range[0] + y_range[1]) / 2
+    # Divide the ranges into smaller sub-ranges
+    x_mid = (mx1_range[0] + mx1_range[1]) / 2
+    y_mid = (ny1_range[0] + ny1_range[1]) / 2
 
-    # Generate points within the subranges
-    _generate_points(points, size // 4, (x_range[0], x_mid), (y_range[0], y_mid))
-    _generate_points(points, size // 4, (x_range[0], x_mid), (y_mid, y_range[1]))
-    _generate_points(points, size // 4, (x_mid, x_range[1]), (y_range[0], y_mid))
-    _generate_points(points, size // 4, (x_mid, x_range[1]), (y_mid, y_range[1]))
+    # Generate points within the sub-ranges
+    Recursive_generated_points(points, size // 4, (mx1_range[0], x_mid), (ny1_range[0], y_mid))
+    Recursive_generated_points(points, size // 4, (mx1_range[0], x_mid), (y_mid, ny1_range[1]))
+    Recursive_generated_points(points, size // 4, (x_mid, mx1_range[1]), (ny1_range[0], y_mid))
+    Recursive_generated_points(points, size // 4, (x_mid, mx1_range[1]), (y_mid, ny1_range[1]))
 
     # Generate points within the current subrange
     for _ in range(size):
-        x = random.uniform(x_range[0], x_range[1])
-        y = random.uniform(y_range[0], y_range[1])
+        x = random.uniform(mx1_range[0], mx1_range[1])
+        y = random.uniform(ny1_range[0], ny1_range[1])
         points.append((x, y))
 
 def main():
@@ -55,7 +75,7 @@ def main():
     y_range = (0, 10)
 
     # Generate a set of 10 random points within the specified ranges
-    points = generate_random_points(10, x_range, y_range)
+    points = create_a_set_random_points(10, x_range, y_range)
 
     # Print the generated points
     for point in points:

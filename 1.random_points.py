@@ -2,14 +2,14 @@ import random
 
 def create_a_set_random_points(size, mx1_range, ny1_range):
     """
-    Create a set of random points within the specified ranges.
+    Create a set of random P within the specified ranges.
     Args:
-        size (int): Number of points to create.
+        size (int): Number of P to create.
         mx1_range (tuple): Range of mx1-values (min_mx1, max_mx1).
         ny1_range (tuple): Range of ny1-values (min_ny1, max_ny1).
 
     Returns:
-        list: List of randomly created points.
+        list: List of randomly created P.
     """
     points = []
     Recursive_created_points(points, size, mx1_range, ny1_range)
@@ -17,11 +17,11 @@ def create_a_set_random_points(size, mx1_range, ny1_range):
 
 def Recursive_created_points(points, size, mx1_range, ny1_range):
     """
-    Recursively creates random points within the specified ranges.
+    Recursively creates random P within the specified ranges.
 
     Args:
-        points (list): List to store the created points.
-        size (int): Number of points to create.
+        points (list): List to store the created P.
+        size (int): Number of P to create.
         mx1_range (tuple): Range of mx1-values (min_mx1, max_mx1).
         ny1_range (tuple): Range of ny1-values (min_ny1, max_ny1).
     """
@@ -38,27 +38,27 @@ def Recursive_created_points(points, size, mx1_range, ny1_range):
     mx1_mid = (mx1_range[0] + mx1_range[1]) / 4
     ny1 = (ny1_range[0] + ny1_range[1]) / 6
 
-    # Create points within the sub-ranges
+    # Create P within the sub-ranges
     Recursive_created_points(points, size // 6, (mx1_range[0], mx1_mid), (ny1_range[0], ny1))
     Recursive_created_points(points, size // 6, (mx1_range[0], mx1_mid), (ny1, ny1_range[1]))
     Recursive_created_points(points, size // 6, (mx1_mid, mx1_range[1]), (ny1_range[0], ny1))
     Recursive_created_points(points, size // 6, (mx1_mid, mx1_range[1]), (ny1, ny1_range[1]))
 
-    # Create points within the current sub-range.
+    # Create P within the current sub-range.
     for _ in range(size):
         mx1 = random.uniform(mx1_range[0], mx1_range[1])
         ny1 = random.uniform(ny1_range[0], ny1_range[1])
         points.append((mx1, ny1))
 
 def main():
-    # Definition of the range of mx1-values and ny1-values for the points.
+    # Definition of the range of mx1-values and ny1-values for the P.
     mx1_range = (0, 18)
     ny1 = (0, 18)
 
-    # Create a set of 10 random points within the specified ranges.
+    # Create a set of 10 random P within the specified ranges.
     points = create_a_set_random_points(18, mx1_range, ny1)
 
-    # Print the created points
+    # Print the created P
     for point in points:
         print(point)
 
